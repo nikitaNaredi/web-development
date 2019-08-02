@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="sty le.css">
+	<style>
+		*{
+			box-sizing:border-box;
+		}
+		.registration-form-container{
+			border : 1px solid blue;
+			width : fit-content;
+		}
+		.row{			
+			width : 100%;
+			margin:2px;
+		}
+		.input-wrapper{
+			float : left;
+			width : 47%;
+			margin : 5px;
+		}
+		.state-input-wrapper{
+			float : left;
+			
+			width : 50%;
+		}
+		.select-state-input-wrapper{
+		
+		}
+		select{
+			width : 100%;
+		}
+		.container{
+			border : 1px solid green;
+			padding : 15px 0px 15px 0px;
+			margin:auto;
+			width : fit-content;
+			position:relative;
+			top:50%;
+			bottom:40%;
+			height : auto;
+			padding:15px;
+		}
+		.input-wrapper2{
+			margin : 5px;
+		}
+		.submit{
+			
+		}
+	</style>
+</head>
+<body>
+    <div class="container">
+        <!-- registration form -->
+        <div class="registration-form-container">
+            <div class="form-header">
+                Registration Form
+            </div>
+            <form name="registration-form">
+                <div class="registration-form">
+                    <div class="row">
+                        <div class="input-wrapper">
+                            <label for="firstname">First Name</label><br/>
+                            <input type="text" required name="firstname">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="lastname">Last Name</label><br/>
+                            <input type="text" required name="lastname">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-wrapper">
+                            <label for="emailid">Email ID</label><br/>
+                            <input type="email" required name="emailid">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="userid">Your User ID</label><br/>
+                            <input type="text" name="userid">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-wrapper">
+                            <label for="country">Country</label><br/>
+                            <select name="country" class="country-input-wrapper">
+                                <option value="" selected>Select</option>
+                                <option value="country1" >Country1</option>
+                                <option value="country2">Country2</option>
+                                <option value="country3">Country3</option>
+                                <option value="country4">Country4</option>
+                            </select>
+                        </div>
+                        <div class="input-wrapper">
+                            <div class="state-input-wrapper" style="padding-right:3px">
+                                <label for="state">State</label><br/>
+                                <select name="state" class="select-state-input-wrapper">
+                                    <option value="" selected>Select</option>
+                                    <option value="state1">State1</option>
+                                    <option value="state2">State2</option>
+                                    <option value="state3">State3</option>
+                                </select>
+                            </div>
+                            <div class="state-input-wrapper" style="padding-left:3px">
+                                <label for="city">City</label><br/>
+                                <select name="city"class="select-state-input-wrapper">
+                                    <option value="" selected>Select</option>
+                                    <option value="city1">City1</option>
+                                    <option value="city2">City2</option>
+                                    <option value="city3">City3</option>
+                                </select>
+                            </div>
+                        </div>            
+                    </div>
+                    <div class="row">
+                        <div class="input-wrapper">
+                            <label for="mobilenumber">Mobile Number</label><br/>
+                            <input type="text" maxlength="10" minlength="10" name="mobilenumber">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="referencecode">Reference Code</label><br/>
+                            <input type="text" name="referencecode">
+                        </div>
+                    </div>
+                    <div class="row"> 
+                        <div class="input-wrapper ">
+                            <label for="gender">Select gender</label><br/>
+                            <input type="radio" checked name="gender" id="" value="male"> Male<br/>
+                            <input type="radio" name="gender" id="" value="female"> Female<br/>
+                            <input type="radio" name="gender" id="" value="other"> Other<br/>
+                        </div>
+                        <div class="input-wrapper ">
+                            <label for="hobbies">Select Hobbies</label><br/>
+                                <input type="checkbox" name="photography" id="">Photography<br/>
+                                <input type="checkbox" name="cycling" id="">Cycling<br/>
+                                <input type="checkbox" name="writing" id="">Writing<br/>
+                                <input type="checkbox" name="dancing" id="">Dancing<br/>                     
+                        </div>
+                    </div>
+                    <div class="row input-wrapper2">
+                        <label>About yourself</label><br/>
+                        <textarea name="about-self" id="" cols="48" rows="2"></textarea>
+                    </div>
+                    <div class="submit-wrapper input-wrapper2 row">
+                        <input type="submit" value="Submit" class="submit">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- registration form end here-->
+    </div>
+</body>
+</html>

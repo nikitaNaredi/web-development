@@ -1,0 +1,30 @@
+ *{
+	 box-sizing:border-box;
+ }
+ .navbar{
+	 background-color : blue;
+	 border:2px solid red;
+	 height:10%;
+	 padding :0.5%;
+ }
+  .row{
+	 border:1px solid red;
+	 width:50%;
+	 margin : auto;
+	
+	 display : flex;
+	 justify-content : space-between;
+	height : 100%;
+	 
+ }
+ .content{
+  
+ }
+ #select{
+	 width:35%;
+	 
+	
+ }
+ #input{
+	 width:55%;
+ }

@@ -1,14 +1,16 @@
  *{
 	 box-sizing:border-box;
+	 font-family: 'Lato', sans-serif;
+	  font-weight:400;
  }
  .navbar{
-	 background-color : blue;
+	 background-color : #3792DF;
 	 border:2px solid red;
 	 height:10%;
 	 padding :0.5%;
  }
   .navbar-row{
-	border:1px solid red;
+	//border:1px solid red;
 	width:50%;
 	margin : auto;
 	display : flex;
@@ -31,27 +33,91 @@
 	display : flex;
 	flex-wrap : wrap;
  }
+ .first-row{
+	//border: 1px solid green;
+	display : flex;
+	flex-wrap : wrap;
+ }
  #select{
 	 width:35%;
-	 
-	
- }
+	 border-radius: 5px;
+}
  #input{
-	 width:55%;
+	 width:85%;
+	 height:100%;
+	 border : 0px;
+	 padding:0px;
+	 border-radius: 5px 0px 0px 5px;
+	 outline: 0px;
+ }
+ #submit{
+	 width:15%;
+	 border : 0px;
+	 padding:0px;
+	 background-color: white;
+	 border-radius: 0px 5px 5px 0px;
+ }
+ 
+ #submit i{
+	 
+	 font-size:20px;
+	
  }
  #profile-icon{
 	 width:100%;
-	 height:40%
+	height:30%;
  }
  .left-content{
 	 width : 20%;
-	 border : 1px solid yellow;
+	 //border : 1px solid yellow;
 	 
  }
- .right-content{
-	 width : 80%;
+ .mid-content{
+	 width : 60%;
+	 //border : 1px solid yellow;
+ }
+  .right-content{
+	 width : 20%;
 	 border : 1px solid yellow;
+	 position: relative;
+	
+ }
+ #btn-detatil{
+	 margin:5px;
+	  position: absolute;
+	  bottom :0px;
+	  right:0px;
+	  width : -webkit-fill-available;
+	  height : 20%;
+	  background-color:white;
+ }
+ .name , .detail-data p{
+	 font-weight:700;
  }
  .first-inner-row{
 	 height:fit-content;
+ }
+ .detail-data{
+	 width : 60%;
+	 margin : auto;
+	 display : flex;
+	 flex-direction:column;
+	 display:none;
+ }
+ .detail-data-row{
+	
+ }
+ .searchbox{
+	  width:55%;
+	  display:flex;
+ }
+.right-content-collapse{
+	width : 20%;
+	 //border : 1px solid yellow;
+	 position: relative;
+	 display:none;
+ }
+ .detail-data-row p{
+	 float:left;
+	width:50%;
  }

@@ -1,63 +1,63 @@
 <html>
 	<head>
 		<script src="main.js" ></script>
+		<script src="https://use.fontawesome.com/96604d4434.js"></script>
 		<link rel="stylesheet" href="main.css" >
-			<body>
-				<div class="navbar">
-					<div class="navbar-row">
-						<select name="sort" id="select">
-							<option>Sort By Name</option>
-							<option>Sort By Rank</option>
-						</select>
-						<input type="text" name="search" id="input"></input>
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+	</head>
+	<body>
+	
+		<div class="navbar">
+			<div class="navbar-row">
+			
+				<select name="sort" id="select">
+					<option>Sort By Name</option>
+					<option>Sort By Rank</option>
+				</select>
+				
+				<div class="searchbox">
+					<input type="text" name="search" id="input" onkeyup="api(this.value)">
+						<button id="submit" ><i class="fa fa-search" aria-hidden="true"></i></button>
+					</input>
+				</div>
+				
+			</div>
+		</div>
+		
+		<div class="container">
+			<div class="row">
+				<div class="first-row">
+					<div class="left-content">
+						<img src="niki.jpg" id="profile-icon"></img>
+					</div>
+					<div class="mid-content">
+						<p class="name">Name </p>
+						<p>Profile URL: </p>
+						<p>Data One: </p>
+						<p>Data Two: </p>
+					</div>
+					<div class="right-content">
+						<button id = "btn-detatil" onclick="detail()">Details</button>
+					</div>
+					<div class="right-content-collapse">
+						<button id = "btn-detatil" onclick="collapse()">Collapse</button>
 					</div>
 				</div>
-				<div class="container">
-					<div class="row">
-						<div class="left-content">
-							<img src="niki.jpg" id="profile-icon"></img>
-						</div >
-						<div class="right-content">
-							<p>Name </p>
-							<p>Profile URL: </p>
-							<p>Data One: </p>
-							<p>Data Two: </p>
-							<button>Details</button>
-						</div>
-						<div>
-							<p>Data Label</p>
-							<p>Data Label one</p>
-							<p>Data Label</p>
-							<p>Data Label one</p>
-							<p>Data Label</p>
-							<p>Data Label one</p>
-							<p>Data Label</p>
-							<p>Data Label one</p>
-						</div>
+				<div class="detail-data">
+					<div class="detail-data-row"> 
+						<p>Data Label</p>
+						<p>Data Label one</p>
 					</div>
-					<div class="row">
-						<div class="left-content">
-							<img src="niki.jpg" id="profile-icon"></img>
-						</div >
-						<div class="right-content">
-							<p>Name </p>
-							<p>Profile URL: </p>
-							<p>Data One: </p>
-							<p>Data Two: </p>
-							<button>Details</button>
-						</div>
-						<div>
-							<p>Data Label</p>
-							<p>Data Label one</p>
-							<p>Data Label</p>
-							<p>Data Label one</p>
-							<p>Data Label</p>
-							<p>Data Label one</p>
-							<p>Data Label</p>
-							<p>Data Label one</p>
-						</div>
+					<div class="detail-data-row"> 
+						<p>Data Label</p>
+						<p>Data Label one</p>
+					</div>
+					<div class="detail-data-row"> 
+						<p>Data Label</p>
+						<p>Data Label one</p>
 					</div>
 				</div>
-			</body>
-				</head>
-			</html>
+			</div>
+		</div>
+	</body>
+</html>

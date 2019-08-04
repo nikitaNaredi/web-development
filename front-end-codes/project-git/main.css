@@ -2,12 +2,15 @@
 	 box-sizing:border-box;
 	 font-family: 'Lato', sans-serif;
 	  font-weight:400;
+	 
+ }
+ body{
+	 margin:0px; 
  }
  .navbar{
 	 background-color : #3792DF;
-	 border:2px solid red;
-	 height:10%;
-	 padding :0.5%;
+	 height:9%;
+	 padding : 0.9%;
  }
   .navbar-row{
 	//border:1px solid red;
@@ -15,11 +18,10 @@
 	margin : auto;
 	display : flex;
 	justify-content : space-between;
-	height : 100%;
+	height : 90%;
 	 
  }
  .container{
-	border:1px solid red;
 	width:50%;
 	margin : auto;
 	display : flex;
@@ -29,7 +31,9 @@
  }
  .row{
 	height : fit-content;
-	border: 1px solid green;
+	border: 1px solid black;
+	    box-shadow: 1px 1px 3px 1px grey;
+		margin-bottom:10px; 
 	display : flex;
 	flex-wrap : wrap;
  }
@@ -64,8 +68,10 @@
 	
  }
  #profile-icon{
-	 width:100%;
-	height:30%;
+	    border-radius: 50%;
+    /* margin: auto; */
+    margin: 12px;
+	width:80%;
  }
  .left-content{
 	 width : 20%;
@@ -78,7 +84,6 @@
  }
   .right-content{
 	 width : 20%;
-	 border : 1px solid yellow;
 	 position: relative;
 	
  }
@@ -120,4 +125,10 @@
  .detail-data-row p{
 	 float:left;
 	width:50%;
+ }
+ .detail-data .detail-data-row:nth-child(even){
+	 background-color : #dedede;
+ }
+ div.detail-data .detail-data-row:nth-child(odd){
+	 background-color : #cdcdcd;
  }

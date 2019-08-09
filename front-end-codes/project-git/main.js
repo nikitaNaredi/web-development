@@ -58,7 +58,8 @@
 			 var htmlData = "";
 			 var JsonData=[];
 			 var parseJson = (JSON.parse(xhttp.responseText)).items;
-			 
+			 var total = (JSON.parse(xhttp.responseText)).total_count;
+			 document.getElementById('total').innerHTML = "Total Counts: "+total;
 			 for(var x in parseJson){
 				JsonData[x] = {};
 				JsonData[x].login = parseJson[x].login   //getname(parseJson[x].url) ;
@@ -116,4 +117,15 @@
 	xhttp.send();
 	 }
  }
- //https://medium.com/@abderrahman.hamila/cors-is-not-your-nightmare-but-6cbc749400cf
+ 
+ function pagination(total){
+	 
+	var div =  Math.ceil(total/30);
+	var rem = total%30;
+	for (var x=0; x<div ;x++){
+			
+		
+	 
+	}
+ 
+ }

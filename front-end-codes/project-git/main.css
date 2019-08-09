@@ -132,3 +132,11 @@
  div.detail-data .detail-data-row:nth-child(odd){
 	 background-color : #cdcdcd;
  }
+ .pagination{
+	width:50%;
+	margin : auto;
+ }
+ .page{
+	 position: absolute;
+    right: 0px;
+ }

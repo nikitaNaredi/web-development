@@ -48,7 +48,7 @@
 	xhttp.send();
  }
  
- function api(key){
+ function api(key,pages,pageUrl){
 	 if(key.trim()){
 	 console.log("key::"+key);
 	 var xhttp = new  XMLHttpRequest();
@@ -104,13 +104,18 @@
 				 ' </div><div class="right-content"><button id = "btn-detatil"'+i+' onclick="detail('+i+',\''+JsonData[i].url+'\')">Details</button></div><div class="right-content-collapse"><button id = "btn-detatil"'+i+' onclick="collapse('+i+')">Collapse</button></div></div><div class="detail-data"'+i+'></div></div>';
 			 }
 			 document.getElementsByClassName('row-container')[0].innerHTML =  htmlData;
+			 if(!pages)
+			 document.getElementsByClassName('pagination')[0].innerHTML =  pagination(total,key);
+			 
 			 
 			 
 		 }
 		 
 	 }
-	
-	xhttp.open('GET','https://api.github.com/search/users?q='+key,true);
+	if(!pages)
+		xhttp.open('GET','https://api.github.com/search/users?q='+key+'&page=1&per_page=5',true);
+	else
+		xhttp.open('GET',pageUrl,true);
 	xhttp.setRequestHeader('Origin',"https://api.github.com");
 	xhttp.setRequestHeader('Accept','application/json');
 	xhttp.setRequestHeader('Content-Type','application/json');
@@ -118,14 +123,36 @@
 	 }
  }
  
- function pagination(total){
+ function pagination(total,key){
 	 
-	var div =  Math.ceil(total/30);
-	var rem = total%30;
-	for (var x=0; x<div ;x++){
-			
-		
-	 
+	var div =  Math.ceil(total/10);
+	var rem = total%10;
+	var html = "";
+	var x = 1;
+	
+	if( div > 3  ){
+		html += '<span onclick="callApi(\''+key+'\''+','+x+')">'+'<'+'</span>'
+		//for(var k=1;k<=3;k++)
+		html += '<span id="first" onclick="callApi(\''+key+'\','+x+')">'+x+'</span>'
+	html += '<span id="second" onclick="callApi(\''+key+'\','+x+')">'+(1+x)+'</span>'
+	html += '<span id="last" onclick="callApi(\''+key+'\','+x+')">'+(2+x)+'</span>'
+	html += '<span onclick="number(\''+total+'\''+','+x+')">'+'>'+'</span>'
 	}
- 
- }
+		
+	return html;
+}
+function number(total,key){
+	var x = document.getElementById('first').innerHTML;
+	var x2 = document.getElementById('second').innerHTML;
+	var x3 = document.getElementById('last').innerHTML;
+	console.log(x+" "+x2+" "+x3);
+	if(total>x){
+		document.getElementById('first').innerHTML = x2;
+		document.getElementById('second').innerHTML = x3;
+		document.getElementById('last').innerHTML = (1+x3);
+}}
+function callApi(key,page){
+	debugger;
+	api(key,page,"https://api.github.com/search/users?q="+key+"&page="+page+"&per_page=5");
+	debugger;
+}

@@ -16,7 +16,6 @@
 	 var xhttp = new  XMLHttpRequest();
 	 xhttp.onreadystatechange= function(){
 		 if(xhttp.readyState == 4 && xhttp.status == 200){
-			 //console.log("successfull::"+key+"::"+xhttp.responseText);
 			 var htmlData = "",JsonData=[];
 			 var parseJson = JSON.parse(xhttp.responseText);
 			
@@ -35,7 +34,6 @@
 				
 				var htmlCont = '<div class="detail-data-row"><p>Location</p><p>'+JsonData.location+'</p></div><div class="detail-data-row"> <p>Public Repos</p><p>'+JsonData.public_repos+'</p></div><div class="detail-data-row"> <p>Public Gists</p><p>'+JsonData.public_gists+'</p></div><div class="detail-data-row"> <p>Followers</p><p>'+JsonData.followers+'</p></div><div class="detail-data-row"> <p>Public Gists</p><p>'+JsonData.following+'</p></div>'
 				document.getElementsByClassName('detail-data')[i].innerHTML = htmlCont;
-				//return JsonData;
 			 
 		 }else{
 			 return {};
@@ -67,41 +65,12 @@
 				//JsonData[x].location = parseJson[x].location
 				JsonData[x].score = parseJson[x].score;
 				JsonData[x].url = parseJson[x].url;
-				console.log("JsonData -- :: "+x+"::"+JSON.stringify(JsonData));
+				JsonData[x].avatar_url = parseJson[x].avatar_url;
 				
 			 }
-			 console.log("JsonData :: "+JSON.stringify(JsonData));
-			 /* var JsonData = [{
-						"name" : "nikita",
-						"profile_url" : "www.google.com",
-						"blog" : "http://tonsky.me/",
-						"location": "Moscow, Russia",
-						"email": null,
-						"hireable": null,
-						"bio": "Chief Burnout Officer",
-						"public_repos": 91,
-						"public_gists": 24,
-						"followers": 1865,
-						"following": 39	},	
-						{
-						"name" : "nikita",
-						"profile_url" : "www.google.com",
-						"blog" : "http://tonsky.me/",
-						"location": "Moscow, Russia",
-						"email": null,
-						"hireable": null,
-						"bio": "Chief Burnout Officer",
-						"public_repos": 91,
-						"public_gists": 24,
-						"followers": 1865,
-						"following": 39	}
-			 ]; */
 			 for(var i in JsonData){
-				/* htmlData += '<div class="row"><div class="first-row"><div class="left-content"><img src="niki.jpg" id="profile-icon"></img></div><div class="mid-content"><p class="name">'+JsonData[i].login+'</p><p>Profile URL:'+JsonData[i].html_url+' </p><p>Score:'+JsonData[i].score+' </p>'+
-				 ' </div><div class="right-content"><button id = "btn-detatil"'+i+' onclick="detail('+i+','+JsonData[i].url+')">Details</button></div><div class="right-content-collapse"><button id = "btn-detatil"'+i+' onclick="collapse('+i+')">Collapse</button></div></div><div class="detail-data"'+i+'><div class="detail-data-row"><p>Location</p><p>'+JsonData[i].location+'</p></div><div class="detail-data-row"> <p>Public Repos</p><p>'+JsonData[i].public_repos+'</p></div><div class="detail-data-row"> <p>Public Gists</p><p>'+JsonData[i].public_gists+'</p></div><div class="detail-data-row"> <p>Followers</p><p>'+JsonData[i].followers+'</p></div><div class="detail-data-row"> <p>Public Gists</p><p>'+JsonData[i].following+'</p></div></div></div>';*/
-				 
-				 htmlData += '<div class="row"><div class="first-row"><div class="left-content"><img src="niki.jpg" id="profile-icon"></img></div><div class="mid-content"><p class="name">'+JsonData[i].login+'</p><p>Profile URL:'+JsonData[i].html_url+' </p><p>Score:'+JsonData[i].score+' </p>'+
-				 ' </div><div class="right-content"><button id = "btn-detatil"'+i+' onclick="detail('+i+',\''+JsonData[i].url+'\')">Details</button></div><div class="right-content-collapse"><button id = "btn-detatil"'+i+' onclick="collapse('+i+')">Collapse</button></div></div><div class="detail-data"'+i+'></div></div>';
+				htmlData += '<div class="row"><div class="first-row"><div class="left-content"><img src="'+JsonData[i].avatar_url+'" id="profile-icon"></img></div><div class="mid-content"><p class="name">'+JsonData[i].login+'</p><p>Profile URL:'+JsonData[i].html_url+' </p><p>Score:'+JsonData[i].score+' </p>'+
+				 ' </div><button class="right-content" id = "btn-detatil"'+i+' onclick="detail('+i+',\''+JsonData[i].url+'\')">Details</button><div class="right-content-collapse"><button id = "btn-detatil"'+i+' onclick="collapse('+i+')">Collapse</button></div></div><div class="detail-data"'+i+'></div></div>';
 			 }
 			 document.getElementsByClassName('row-container')[0].innerHTML =  htmlData;
 			 if(!pages)
@@ -125,34 +94,49 @@
  
  function pagination(total,key){
 	 
+
 	var div =  Math.ceil(total/10);
-	var rem = total%10;
 	var html = "";
 	var x = 1;
 	
 	if( div > 3  ){
-		html += '<span onclick="callApi(\''+key+'\''+','+x+')">'+'<'+'</span>'
-		//for(var k=1;k<=3;k++)
-		html += '<span id="first" onclick="callApi(\''+key+'\','+x+')">'+x+'</span>'
-	html += '<span id="second" onclick="callApi(\''+key+'\','+x+')">'+(1+x)+'</span>'
-	html += '<span id="last" onclick="callApi(\''+key+'\','+x+')">'+(2+x)+'</span>'
-	html += '<span onclick="number(\''+total+'\''+','+x+')">'+'>'+'</span>'
+		html+='<div class="inner-pagination" style="float: right;">'
+		html += '<span  class="btn" onclick="numberDecrease(\''+key+'\''+','+x+')">'+'&laquo;'+'</span>'
+		html += '<span class="btn" id="first" onclick="callApi(\''+key+'\',this.innerHTML)">'+x+'</span>'
+		html += '<span class="btn" id="second" onclick="callApi(\''+key+'\',this.innerHTML)">'+(1+x)+'</span>'
+		html += '<span class="btn" id="last" onclick="callApi(\''+key+'\',this.innerHTML)">'+(2+x)+'</span>'
+		html += '<span  class="btn" onclick="number(\''+total+'\''+','+x+')">'+'&raquo;'+'</span>'
+		html += '</div>'
 	}
+	else if(total>1){
+		html+='<div class="inner-pagination" style="float: right;">'
 		
+		for(var i=1;i<=total;i++)
+			html += '<span id="first" class="btn" onclick="callApi(\''+key+'\',this.innerHTML)">'+i+'</span>'
+	}
+		html += '</div>'
 	return html;
+}
+function numberDecrease(total,a){
+	var x = document.getElementById('first').innerHTML;
+	var x2 = document.getElementById('second').innerHTML;
+	var x3 = document.getElementById('last').innerHTML;
+	if(parseInt(x) > 1){
+		document.getElementById('first').innerHTML = parseInt(x) - 1;
+		document.getElementById('second').innerHTML = (x);
+		document.getElementById('last').innerHTML = (x2);
+	}
 }
 function number(total,key){
 	var x = document.getElementById('first').innerHTML;
 	var x2 = document.getElementById('second').innerHTML;
 	var x3 = document.getElementById('last').innerHTML;
-	console.log(x+" "+x2+" "+x3);
-	if(total>x){
-		document.getElementById('first').innerHTML = x2;
-		document.getElementById('second').innerHTML = x3;
-		document.getElementById('last').innerHTML = (1+x3);
-}}
+	if(parseInt(total) > parseInt(x)){
+		document.getElementById('first').innerHTML = (x2);;
+		document.getElementById('second').innerHTML = (x3);;
+		document.getElementById('last').innerHTML = parseInt(x3)+1;
+	}
+}
 function callApi(key,page){
-	debugger;
-	api(key,page,"https://api.github.com/search/users?q="+key+"&page="+page+"&per_page=5");
-	debugger;
+	api(key,(page),"https://api.github.com/search/users?q="+key+"&page="+page+"&per_page=5");
 }

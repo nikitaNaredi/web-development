@@ -10,9 +10,9 @@
 		<div class="navbar">
 			<div class="navbar-row">
 			
-				<select name="sort" id="select">
-					<option>Sort By Name</option>
+				<select onchange = "sortName(this.value)" id="select">
 					<option>Sort By Rank</option>
+					<option >Sort By Name</option>
 				</select>
 				
 				<div class="searchbox">
@@ -26,41 +26,8 @@
 		
 		<div class="container">
 			<p style="font-weight:700" id="total">Total counts: 0</p>
-			<div class="row-container"></div>
-			<!-- <div class="row">
-				
-				<div class="first-row">
-					<div class="left-content">
-						<img src="niki.jpg" id="profile-icon"></img>
-					</div>
-					<div class="mid-content">
-						<p class="name">Name </p>
-						<p>Profile URL: </p>
-						<p>Data One: </p>
-						<p>Data Two: </p>
-					</div>
-					<div class="right-content">
-						<button id = "btn-detatil" onclick="detail()">Details</button>
-					</div>
-					<div class="right-content-collapse">
-						<button id = "btn-detatil" onclick="collapse()">Collapse</button>
-					</div>
-				</div>
-				<div class="detail-data">
-					<div class="detail-data-row"> 
-						<p>Data Label</p>
-						<p>Data Label one</p>
-					</div>
-					<div class="detail-data-row"> 
-						<p>Data Label</p>
-						<p>Data Label one</p>
-					</div>
-					<div class="detail-data-row"> 
-						<p>Data Label</p>
-						<p>Data Label one</p>
-					</div>
-				</div>
-			</div> -->
+			<div class="row-container">
+			</div>
 		</div>
 		<div class="pagination">
 			
